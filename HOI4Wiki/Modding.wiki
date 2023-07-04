@@ -1,6 +1,6 @@
 {{version|Timeless}}
 
-'''모딩'''(Modding), 혹은 [[모드]] 제작은 (흔히 ''바닐라''라고 하는) 원본 게임을 수정하는 작업입니다. 모딩의 목적은 개인적인 사용일 수도 있고 [http://steamcommunity.com/app/394360/workshop/ 스팀 워크샵] 등을 통해 공개적으로 배포하기 위해서일 수도 있습니다.
+'''모딩'''(Modding), 혹은 [[Mods|모드]] 제작은 (흔히 ''바닐라''라고 하는) 원본 게임을 수정하는 작업입니다. 모딩의 목적은 개인적인 사용일 수도 있고 [http://steamcommunity.com/app/394360/workshop/ 스팀 워크샵] 등을 통해 공개적으로 배포하기 위해서일 수도 있습니다.
 
 [[Hearts of Iron IV]] 또한 여타 패러독스(Paradox Interactive) 사 게임처럼 상당한 수준의 모딩이 가능합니다. 모드를 제작하는 이유는 자국어로의 번역의 질 개선, 또는 사건이나 결정의 변경, 맵 개선, 상당한 수준의 변화 등 다양한 종류가 있습니다.
 
@@ -22,14 +22,14 @@ The game will read any [[#Mod structure|.mod file]] within the <code>mod/</code>
 *'''Use a proper merge tool''' (like [http://winmerge.org/ WinMerge]), to merge between folders, and update modified vanilla files to a new vanilla patch.
 *'''Backup your work''' to avoid losing everything. Consider using a source control system like [https://git-scm.com/ Git] and a collaborative forge like [https://github.com/ GitHub] or [https://gitlab.com Gitlab] to manage team collaboration, or just make a copy of the file somewhere else. Version keeping via Github or Gitlab can also be very useful for debugging due to limiting the selection of potential broken files.
 ** The [https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls Modding Git Guide] is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here.
-*'''Use UTF-8 encoding''' with the byte order mark for text files. This is commonly called "UTF-8", but can sometimes be specified as "UTF-8 without BOM".
+*'''UTF-8 encoding''' with the byte order mark for text files. This is commonly called "UTF-8", but can sometimes be specified as "UTF-8 without BOM".
 *'''Use UTF-8 encoding with the byte order mark''' for localisation files (.yml). This is commonly called "UTF-8-BOM", but can be just "UTF-8", in which case omitting the byte order mark is a separate option. Some text editors, such as Atom, do not support the byte order mark in entirety and should be avoided for localisation.
 *'''Use comments''' starting with # character, to remember reasons for writing tricky stuff. A single sharp sign will make the rest of the line completely ignored. There is no multi-line comment notation in the code.
 *'''Debug''' effectively by enabling Debug mode. Do this by adding '''-debug''' to your launch options in Steam. The launch options are accessed in the menu opened by right-clicking the game and choosing 'Properties..'.<br/> Alternatively, in Windows it's possible to create a shortcut to the hoi4.exe or dowser.exe file, and then to open the shortcut's properties and append -debug (separated by a space) after the path's end, such as {{path|custom=1|"C:\Program Files (x86)\Steam\steamapps\common\Hearts of Iron IV\hoi4.exe" -debug}}.
 
-=== Debug advantages ===
+=== 디버그의 장점 ===
 {{anchor|Advantages to using debug}}
-* '''Automatic loading''' - Edits to files done inside the mod folder will show up in-game without the need to use the 'reload' console command. This will also automatically add the errors in the files to the error log. '''This only applies to files that existed when the game was launched''', with an exception: if a file's direct path gets mentioned elsewhere within the mod, then it can still get loaded for that use in particular. Examples of that include [[Division modding|orders of battle]], as [[Effect#load_oob|load_oob = "TAG_my_oob"]] functions as a direct link to {{path|history/units/TAG_my_oob.txt}}; or GFX, as [[Graphical asset modding#Sprite Types|sprites]] directly reference the position of the image. Although, notably, the loading of images in-game does not uncompress them properly, leading to visible distortion or black backgrounds which get fixed on a restart. Although edits to most files work, this doesn't work with {{path|history/countries/}}, {{path|history/states/}}, and {{path|map/}}, although the nudge partially can be used for the latter two.
+* '''자동 로딩''' - Edits to files done inside the mod folder will show up in-game without the need to use the 'reload' console command. This will also automatically add the errors in the files to the error log. '''This only applies to files that existed when the game was launched''', with an exception: if a file's direct path gets mentioned elsewhere within the mod, then it can still get loaded for that use in particular. Examples of that include [[Division modding|orders of battle]], as [[Effect#load_oob|load_oob = "TAG_my_oob"]] functions as a direct link to {{path|history/units/TAG_my_oob.txt}}; or GFX, as [[Graphical asset modding#Sprite Types|sprites]] directly reference the position of the image. Although, notably, the loading of images in-game does not uncompress them properly, leading to visible distortion or black backgrounds which get fixed on a restart. Although edits to most files work, this doesn't work with {{path|history/countries/}}, {{path|history/states/}}, and {{path|map/}}, although the nudge partially can be used for the latter two.
 * '''No map definition crash''' - If the map is edited, there's a possibility for errors to appear. Any map-related errors will crash the game when loading with a message saying 'Some errors are present in the map defition{{hover|Written exactly as quoted|[''sic'']}} and have been logged to error.log'. If debug mode is on, the game will continue to load properly. The map definition occurs when there is {{hover|This does not include MAP_ERROR: Palette in rivers.bmp is probably not correct|any error containing MAP_ERROR within the error log}} after loading into a country.
 * '''Extended error log''' - Certain errors do not get logged in the log unless the debug mode is turned on. An example would be the map definition errors mentioned above, as the game crashes before getting a chance to log them. Enabling debug mode will ensure that all errors that can be logged in the error log will get logged.
 * '''Ease of error log opening''' - As long as there are any errors in the log, the log will automatically open when loading the game or after selecting a country. The log will also be able to get accessed by clicking on the error dog in the bottom-right corner after loading into a country, which appears each time a new error appears in the log (since files get automatically loaded-in).
@@ -41,7 +41,7 @@ The game will read any [[#Mod structure|.mod file]] within the <code>mod/</code>
 * '''Automatic saving on peace deals''' - The game automatically creates a savefile each time a peace conference occurs with debug.
 Note that if you turn on the debug mode through the 'debug' console command, '''only the last 4 advantages''' will be available to use. If debug is turned on via [[launch options]], be that <code>-debug</code> or <code>-crash_data_log</code>, all benefits will be granted.
 
-== Text editor ==
+== 텍스트 에디터 ==
 {{anchor|Text editor of choice}}
 These are the most common text editors to use for modding the game:
 *[https://code.visualstudio.com/Download Visual Studio Code].
@@ -56,7 +56,7 @@ Reasons to use a non-default text editor include the following:
 * Each line is numbered on its side. Since error log typically points to the line where an error is present, this makes finding the line in question much faster compared to how the Microsoft Notepad only tells the number of the currently-selected line in the below.
 * Greater capabilities to work with multiple files. Each of these editors may only have one instance of it open at a time with multiple files open at once (switching between them with {{key press|Ctrl}} + {{key press|Tab}}), in contrast to Microsoft Notepad that opens a separate instance for each opened file, which can quickly fill the {{key press|Alt}} + {{key press|Tab}} menu. Multiple instances of the text editor can still be opened, however. A text comparison tool also exists on each one of these: {{hover|Installed via the &quot;Plugins&quot; → &quot;Plugins Admin..&quot; menu|"ComparePlus" plugin in Notepad++}}, {{hover|Installed via the &quot;Preferences&quot; → &quot;Package Control&quot; → &quot;Install Package&quot; menu|"Compare Side-By-Side" or "Diffy" package in Sublime Text}}, or a variety of Visual Studio Code extensions ([https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff "Partial Diff"] being the most popular one).
 * Greater customisation capabilities: each of these text editors allows a wide variety of light or night themes that can be picked as fit, with downloadable themes existing as well. Since one would need to look at the text editor a lot while modding, selecting a theme that looks good to the eyes can make the experience much better.
-===Searching multiple files===
+===여러 파일 찾기===
 {{anchor|Search in files}}
 One feature of non-default text editors is a highly-customisable search of all files within the same folder. This is highly useful for dealing with errors and finding locations of certain elements.<br/>
 '''Windows File Explorer is a poor choice for doing this''', as it only searches inside of .txt files while it may be desirable to search files of other extensions, e.g. .yml, .gfx, .gui, or .asset, and it is very noticeably slower than either text editor: a search taking ~10 seconds on a text editor may take up to 15 minutes to conclude in the Windows File Explorer.
@@ -76,7 +76,7 @@ There are the following uses for this:
 * Dealing with unintuitive errors where the location is not specified, such as <code>Invalid Decision Category</code>, where this can be used to locate ''which'' file is throwing the error.
 * Finding out what can cause a certain occurance to happen, such what fires a certain event.
 
-===Indenting===
+===들여쓰기===
 Another reason to use non-default text editors is greater indenting capabilities. Indenting refers to the usage of newlines and spaces at the beginning of the line, which does not leave an impact on how the code is interpreted, but makes it easier to see the relations between different parts of the code.<br/>
 Typically, either a tab character (represented as <code>\t</code>) or 4 spaces are used as a single indenting level, placed from the beginning of the line to the beginning of code on the line. In order to increase the indenting level of code, the {{key press|Tab}} button is used in text editors, which can be done on multiple lines at the same time by selecting them. Inversely, {{key press|Shift}}+{{key press|Tab}} is used to decrease the indenting level of the line by one.
 
@@ -212,7 +212,7 @@ There are these types of argument blocks are particularly common:
 * [[Scopes]] are a particular subset of triggers and effects that can be used to change for which country/state/character/division the effects are executed or triggers are checked for.
 * [[Modifiers]] are used to apply a constant numeric change, such as the daily political power gain. Commonly, [[Idea modding|ideas such as spirits]] are used to apply it to countries.
 
-=== Localisation ===
+=== 현지화 (Localisation) ===
 {{Main|Localisation}}
 Names depending on language are defined within [[localisation]]. Taking only the English language into consideration, the {{path|localisation/english}} folder is used. A file within must end with <code>_l_english.yml</code> in the filename to work properly, including the extension that is hidden by default within the Windows File Explorer. The file must be encoded in the UTF-8 encoding with the byte-order mark included, usually called UTF-8-BOM. The exact details on conversion depend on the text editor. The first line in the file is <code>l_english: </code> to assign it to that database.
 
@@ -249,7 +249,7 @@ There are also potential errors that may occur related to sprites:
 * The character uses a randomly-generated portrait: This is an indication of either of the previous two problems: a character with an invalid sprite or a missing file will have their portrait randomised.
 
 
-== Mod structure ==
+== 모드 구조 ==
 {{Hatnote|The .mod file extension doesn't show up in the Windows File Explorer by default, which can make finding the files mentioned here more difficult. [https://support.microsoft.com/en-gb/windows/common-file-name-extensions-in-windows-da4a4430-8e76-89c5-59f7-1cdbbc75cb01 Ensure that file extensions are set to show up.]}}
 {{Hatnote|Unless stated otherwise, this section assumes that the files are in the user directory, the location of which can be seen in the lead of the article.}}
 There are two descriptor files with the .mod extension associated with each mod:
@@ -307,7 +307,7 @@ This is particularly obvious with the loading screens: <code>replace_path = "gfx
 '''This option must be added to both .mod files''': leaving it out in the mod-specific descriptor will cause the launcher to remove it from the user-specific one, while leaving it out in the user-specific descriptor will cause it to not take effect instead of being copied from the mod-specific descriptor as most other attributes do.<br/>
 '''This commonly causes game crashes and unintuitive errors if used recklessly'''. In some folders, the game isn't built for there being no database entries, such as [[National focus modding|national focuses]], resulting in a crash; in others, such as [[Scripted trigger]]s, there are several usages for entries besides the obvious, which can cause unintuitive errors such as the resistance system being triggered when unintended. Therefore, the <code>replace_path</code> attribute shouldn't be used recklessly: there should always be at least one file with content within the replaced folder in the mod files, and the base game's contents in the folder should be checked manually to see if anything useful is better left as remaining in the mod.
 
-==Game data==
+==게임 데이터==
 
 * [[Console commands]], useful for debugging mods.
 * [[Defines]], which allow to influence some hardcoded vanilla behaviors
@@ -317,12 +317,12 @@ This is particularly obvious with the loading screens: <code>replace_path = "gfx
 
 Names for in-game items (e.g. the name for research categories or rules like can_create_faction) can be found in the game's localization folder, inside the localization files.
 
-==Tools & utilities==
+==도구 및 유틸리티==
 * [https://forum.paradoxplaza.com/forum/index.php?forums/hearts-of-iron-4-user-mods.950/ Official Paradox Forum for mods]
 * [https://forum.paradoxplaza.com/forum/index.php?threads/information-and-faq.924764/ Maya exporter] - Clausewitz Maya Exporter to create your own 3D models.
 * [http://steamcommunity.com/app/394360/workshop/ Steam Workshop] - The place where you can share your creations with other players.
 
-==Common mistakes==
+==자주 발생하는 실수==
 * '''Two mods with the same name''' (''Mod fails to load'') – This commonly happens when subscribing to one's own mod on Steam Workshop. If there are two mods with the same name, the game will fail to load the one that was added later, making it appear as if the base game was opened. This is corrected by changing the name of either of the mods. Generally, there is no reason to subscribe to your own mod in the Steam Workshop: it will never function any differently from the local mod and this may also occassionally break updating the mod due to duplicate <code>remote_file_id</code> attributes in different mods.
 * '''Wrong path''' (''replace_paths apply, yet the mod doesn't get loaded'') – In this case, the needed file to adjust is {{path|mod/modname.mod}}, opened directly within a text editor. There are two primary variations on this issue:
 :* '''Incorrect path''' – This is commonly the cause if the game displays the filesize of the mod, but doesn't load it. The mod doesn't route to the file directly. This can sometimes be a cause of further subfoldering, such as if the mod is located in {{path|custom=1|mod/my_mod/cool_mod}}, yet the user-specific .mod file contains <code>path = "mod/my_mod"</code>. In this case, the files still exist and get loaded. However, the game, for example, expects focus trees in the {{path|common/national_focus/}} folder. {{path|custom=1|mod/my_mod/cool_mod/common/national_focus/}} gets taken to be {{path|cool_mod/common/national_focus/}} instead, as <code>path = "mod/my_mod"</code> doesn't knock off the {{path|custom=1|/cool_mod/}} folder. This is corrected simply by adjusting the path to be to the correct folder.
@@ -334,7 +334,7 @@ Names for in-game items (e.g. the name for research categories or rules like can
 * '''Not copying over mod information entries''' (''Entries such as replace_path fail to apply'') – The game keeps the mod's {{path|custom=1|modname/descriptor.mod}} file as the information for the mod in general and {{path|mod/modname.mod}} as the information for the mod that gets read for the machine. While the launcher typically attempts to keep the machine-specific file up to date with the general mod information file, it sometimes fails to do so, such as for replace_paths where it succeeds at deleting unneeded entries but not at copying needed ones. In this case, both files must be edited manually for a replace_path to apply. This also may be needed for other entries in the file.
 * '''Files with similar names''' (''File gets loaded twice'') – In this case, "similar" is defined as a pair of files within the same folder that have names made up of different characters, but would be considered as having the same name with case-insensitive checking, such as {{path|events/Generic.txt}} and {{path|events/GENERIC.txt}}. If the mod files contain a file that has a similar name to a base game file, the mod file will get loaded twice. Adjusting the filename to be the exact same as the base game file or entirely distinct will fix this issue. '''This applies even if the folder that the base game file is in is unloaded with replace_path'''.
 
-==Useful knowledge==
+==유용한 지식==
 
 Large English-speaking modding communities include [https://discord.gg/8p7PSbR the HOI4 Modding Coop] and [https://discord.gg/4DczT9pVtH the HOI4 Modding Den], which can be joined on [https://discord.com Discord]. It's useful to join one or multiple of them, as they contain links to modding resources and you can ask questions regarding modding in them.
 
@@ -346,7 +346,7 @@ editor_postfix=" -n$"</pre>
 editor="C:\\Program Files\\Sublime Text 3\\sublime_text.exe"
 editor_postfix=":$:1"</pre>
 
-==See also==
+==더 보기==
 *[[Mods]]
 * Getting started with modding [[forum: 995985]]
 * How to create a new ship unit in Man the Guns [[forum: 1157324]]
