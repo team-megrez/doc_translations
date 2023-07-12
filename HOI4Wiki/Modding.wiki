@@ -9,7 +9,7 @@
 * '''Mac OS''': <code>~/Documents/Paradox Interactive/Hearts of Iron IV</code>
 * '''Linux''': <code>~/.local/share/Paradox Interactive/Hearts of Iron IV</code> 
 
-모드는 사용자 디렉토리 내의 <code>mod/</code> 폴더에 저장된다. 만약 사용자의 If the path to the user directory (Windows 계정명 포함) includes any special characters (Such as umlauts, other diacritics, or Cyrillic), the game will not work properly. Local mods will fail to load, and the game will not be able to open the error log by itself. The user directory's location can be changed in {{path|launcher-settings.json}} in the base game folder by changing the <code>"gameDataPath"</code> line and moving the files to that folder.
+모드는 사용자 디렉토리 내의 <code>mod/</code> 디렉토리에 저장됩니다. 만약 사용자 디렉토리 경로가 (Windows 계정명 포함) 특수문자(예: 움라우트 등 발음 기호, 키릴 문자, etc.)를 포함한다면 게임이 정상적으로 작동하지 않습니다. 이 경우 로컬 모드를 불러올 수 없으며 게임이 스스로 에러 로그를 열 수 없게 될 것입니다. 사용자 디렉토리의 위치는 게임 파일 디렉토리의 {{path|launcher-settings.json}} 파일에서 <code>"gameDataPath"</code> 설정을 수정하고 설정된 디렉토리에 파일을 옮기는 방식으로 변경할 수 있습니다.
 
 Alongside mods, the game will load any files stored in the user directory. The game's internal map editor, the Nudger, stores its output within that folder.
 
@@ -17,10 +17,10 @@ The game will read any [[#Mod structure|.mod file]] within the <code>mod/</code>
 
 ==가이드라인==
 
-*'''게임 파일을 수정하지 않습니다''': use a mod even for small changes, and never modify directly game files in Steam Hearts of Iron 4 folder, as your changes may be undone without warning.
+*'''게임 파일을 수정하지 마세요''': use a mod even for small changes, and never modify directly game files in Steam Hearts of Iron 4 folder, as your changes may be undone without warning.
 *'''Minimize overwrites of vanilla files''' by adding separate files and loading from folders whenever possible, to improve mod compatibility and maintenance. (Your files can have any name, all files in the folder will be loaded by the game. So choose a name, no one else will ever use, like the name of your mod. Ex: coolmod_countries)
-*'''Use a proper merge tool''' (like [http://winmerge.org/ WinMerge]), to merge between folders, and update modified vanilla files to a new vanilla patch.
-*'''Backup your work''' to avoid losing everything. Consider using a source control system like [https://git-scm.com/ Git] and a collaborative forge like [https://github.com/ GitHub] or [https://gitlab.com Gitlab] to manage team collaboration, or just make a copy of the file somewhere else. Version keeping via Github or Gitlab can also be very useful for debugging due to limiting the selection of potential broken files.
+*'''Use a proper merge tool''' (예를 들어 [http://winmerge.org/ WinMerge]), to merge between folders, and update modified vanilla files to a new vanilla patch.
+*'''작업 내용을 백업'''하여 손실을 방지하십시오. [https://git-scm.com/ Git] 같은 소스 컨트롤 시스템을 사용하거나 [https://github.com/ GitHub] 또는 [https://gitlab.com Gitlab] 같은 협업 공간을 사용하는 것도 고려할 수 있습니다 to manage team collaboration, or just make a copy of the file somewhere else. Version keeping via Github or Gitlab can also be very useful for debugging due to limiting the selection of potential broken files.
 ** The [https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls Modding Git Guide] is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here.
 *'''UTF-8 encoding''' with the byte order mark for text files. This is commonly called "UTF-8", but can sometimes be specified as "UTF-8 without BOM".
 *'''Use UTF-8 encoding with the byte order mark''' for localisation files (.yml). This is commonly called "UTF-8-BOM", but can be just "UTF-8", in which case omitting the byte order mark is a separate option. Some text editors, such as Atom, do not support the byte order mark in entirety and should be avoided for localisation.
@@ -43,7 +43,7 @@ Note that if you turn on the debug mode through the 'debug' console command, '''
 
 == 텍스트 에디터 ==
 {{anchor|Text editor of choice}}
-These are the most common text editors to use for modding the game:
+게임 모딩에는 대체로 아래의 텍스트 에디터들이 사용됩니다:
 *[https://code.visualstudio.com/Download Visual Studio Code].
 ::Has a fan-made CWTools extension with Paradox syntax highlighting, validation and tooltips for triggers and effects. To install it, go to Extensions on the left panel of VS and search for CWTools. (Note: validation rules are incomplete and will show many false errors in gui and localization files). 
 ::Recent versions with automatic highlighting of {} pairs in different colours and flagging opened/closing ones that are missing a partner red is worth it's weight in gold.
@@ -323,7 +323,7 @@ Names for in-game items (e.g. the name for research categories or rules like can
 * [http://steamcommunity.com/app/394360/workshop/ Steam Workshop] - The place where you can share your creations with other players.
 
 ==자주 발생하는 실수==
-* '''Two mods with the same name''' (''Mod fails to load'') – This commonly happens when subscribing to one's own mod on Steam Workshop. If there are two mods with the same name, the game will fail to load the one that was added later, making it appear as if the base game was opened. This is corrected by changing the name of either of the mods. Generally, there is no reason to subscribe to your own mod in the Steam Workshop: it will never function any differently from the local mod and this may also occassionally break updating the mod due to duplicate <code>remote_file_id</code> attributes in different mods.
+* '''이름이 같은 모드가 두 개 존재하는 경우''' (''모드 불러오기 실패'') – This commonly happens when subscribing to one's own mod on Steam Workshop. If there are two mods with the same name, the game will fail to load the one that was added later, making it appear as if the base game was opened. This is corrected by changing the name of either of the mods. Generally, there is no reason to subscribe to your own mod in the Steam Workshop: it will never function any differently from the local mod and this may also occassionally break updating the mod due to duplicate <code>remote_file_id</code> attributes in different mods.
 * '''Wrong path''' (''replace_paths apply, yet the mod doesn't get loaded'') – In this case, the needed file to adjust is {{path|mod/modname.mod}}, opened directly within a text editor. There are two primary variations on this issue:
 :* '''Incorrect path''' – This is commonly the cause if the game displays the filesize of the mod, but doesn't load it. The mod doesn't route to the file directly. This can sometimes be a cause of further subfoldering, such as if the mod is located in {{path|custom=1|mod/my_mod/cool_mod}}, yet the user-specific .mod file contains <code>path = "mod/my_mod"</code>. In this case, the files still exist and get loaded. However, the game, for example, expects focus trees in the {{path|common/national_focus/}} folder. {{path|custom=1|mod/my_mod/cool_mod/common/national_focus/}} gets taken to be {{path|cool_mod/common/national_focus/}} instead, as <code>path = "mod/my_mod"</code> doesn't knock off the {{path|custom=1|/cool_mod/}} folder. This is corrected simply by adjusting the path to be to the correct folder.
 :* '''Impossible path''' – The ''intended'' folder is correct, yet it's stated in a way that the game can't recognise. 
