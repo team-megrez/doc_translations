@@ -11,15 +11,15 @@
 
 모드는 사용자 디렉토리 내의 <code>mod/</code> 디렉토리에 저장됩니다. 만약 사용자 디렉토리 경로가 (Windows 계정명 포함) 특수문자(예: 움라우트 등 발음 기호, 키릴 문자, etc.)를 포함한다면 게임이 정상적으로 작동하지 않습니다. 이 경우 로컬 모드를 불러올 수 없으며 게임이 스스로 에러 로그를 열 수 없게 될 것입니다. 사용자 디렉토리의 위치는 게임 파일 디렉토리의 {{path|launcher-settings.json}} 파일에서 <code>"gameDataPath"</code> 설정을 수정하고 설정된 디렉토리에 파일을 옮기는 방식으로 변경할 수 있습니다.
 
-Alongside mods, the game will load any files stored in the user directory. The game's internal map editor, the Nudger, stores its output within that folder.
+게임은 모드와 더불어 사용자 디렉토리에 저장된 모든 파일들을 로드할 것입니다. 게임의 내부 맵 에디터인 'Nudger'는 해당 디렉토리에 모든 작업물을 저장합니다.
 
-The game will read any [[#Mod structure|.mod file]] within the <code>mod/</code> folder, and a local mod can be created via the launcher: "All installed mods" -> "Upload mod" -> "Create a mod". This is limited in the path and allowed mod structure options, so manually editing the output may be necessary.
+게임은 <code>mod/</code> 디렉토리 내의 모든 [[#Mod structure|.mod 파일]]을 읽으며, 로컬 모드는 런처에서 "All installed mods" -> "Upload mod" -> "Create a mod" 를 통해 생성할 수 있습니다. This is limited in the path and allowed mod structure options, so manually editing the output may be necessary.
 
 ==가이드라인==
 
-*'''게임 파일을 수정하지 마세요''': use a mod even for small changes, and never modify directly game files in Steam Hearts of Iron 4 folder, as your changes may be undone without warning.
+*'''게임 파일을 수정하지 마세요''': 작은 규모의 수정에도 모드를 사용하고, 절대 Steam의 Hearts of Iron 4 폴더에 포함된 게임 파일을 직접 수정하지 말아야 합니다. 그렇지 않을 경우 당신이 수정한 내용이 예고 없이 되돌려질 수 있습니다.
 *'''Minimize overwrites of vanilla files''' by adding separate files and loading from folders whenever possible, to improve mod compatibility and maintenance. (Your files can have any name, all files in the folder will be loaded by the game. So choose a name, no one else will ever use, like the name of your mod. Ex: coolmod_countries)
-*'''Use a proper merge tool''' (예를 들어 [http://winmerge.org/ WinMerge]), to merge between folders, and update modified vanilla files to a new vanilla patch.
+*'''적합한 머지 도구'''(예를 들어 [http://winmerge.org/ WinMerge])를 사용하여 폴더들을 병합하고 바닐라 버전의 패치로 수정된 파일들의 내용을 모드에 융합하십시오.
 *'''작업 내용을 백업'''하여 손실을 방지하십시오. [https://git-scm.com/ Git] 같은 소스 컨트롤 시스템을 사용하거나 [https://github.com/ GitHub] 또는 [https://gitlab.com Gitlab] 같은 협업 공간을 사용하는 것도 고려할 수 있습니다 to manage team collaboration, or just make a copy of the file somewhere else. Version keeping via Github or Gitlab can also be very useful for debugging due to limiting the selection of potential broken files.
 ** The [https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls Modding Git Guide] is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here.
 *'''UTF-8 encoding''' with the byte order mark for text files. This is commonly called "UTF-8", but can sometimes be specified as "UTF-8 without BOM".
@@ -45,9 +45,9 @@ Note that if you turn on the debug mode through the 'debug' console command, '''
 {{anchor|Text editor of choice}}
 게임 모딩에는 대체로 아래의 텍스트 에디터들이 사용됩니다:
 *[https://code.visualstudio.com/Download Visual Studio Code].
-::Has a fan-made CWTools extension with Paradox syntax highlighting, validation and tooltips for triggers and effects. To install it, go to Extensions on the left panel of VS and search for CWTools. (Note: validation rules are incomplete and will show many false errors in gui and localization files). 
+:: 패러독스 사의 구문 강조, 유효성 검사 및 트리거나 효과에 대한 툴팁을 제공하는 CWTools라는 팬메이드 확장이 존재합니다. 설치하려면 Visual Studio Code 좌측 패널의 Extensions(확장) 탭으로 가서 CWTools를 검색하십시오. (참고: 검사 규칙은 아직 미완성 상태이며 현지화나 gui 파일에 대해 여러 가지 존재하지 않는 오류를 표시할 것입니다). 
 ::Recent versions with automatic highlighting of {} pairs in different colours and flagging opened/closing ones that are missing a partner red is worth it's weight in gold.
-*[http://notepad-plus-plus.org/ Notepad++]. Choose Perl as your language, as it will provide good highlighting and allow to fold blocks of code and comments. To set it as default, go to Settings, Style Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
+*[http://notepad-plus-plus.org/ Notepad++]. 언어로 Perl을 선택하십시오, as it will provide good highlighting and allow to fold blocks of code and comments. To set it as default, go to Settings, Style Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
 ::Some options that are commonly turned on by default in other text editors are turned off in Notepad++, but can be changed in the topbar. This includes {{hover|Makes long lines get wrapped across multiple lines instead of requiring scrolling horizontally|Word wrap}}, {{hover|Makes a minimized view of the document appear in the right edge, making scrolling easier but taking up some space|Document map}}, {{hover|Draws lines every 4 spaces or a single tab symbol making it easier to keep track of indentation. This makes missing brackets easier to see by default.|Indent guide}}, and {{hover|Opens an entire folder within the editor as to be able to open files within more easily, without changing to the file explorer, as well as simplifying using the 'Find in files...' command to check every file within a folder without opening each one individually.|Folder as workspace}}.
 *[https://www.sublimetext.com/ Sublime Text]. There is an extension for it released by the developers of Imperator which could be used with HOI4 but use at your own risk: [[forum:sublime-tools-for-imperator.1274246/|Sublime Tools]]. It adds colored highlighting for effects and triggers. If you want to toggle comments in Sublime, you also need to add this file to the same "User" folder.
 Reasons to use a non-default text editor include the following:
@@ -68,7 +68,7 @@ This is how exactly the feature is enabled in the common text editors:
 A filter on the file extension can be set to speed up the search. This depends on the text editor. Note that <code>*</code> is used to mark any amount of any characters, and this is universal.
 * In '''Notepad++''', this is done with the 'filter' menu. Filters are separated with spaces, and an exclamation point in the beginning marks it as an exclude filter. For example, <code>*.yml !*french.yml</code> will result in searching every localisation file aside from the French ones.
 * In '''Sublime Text''', this is in the 'where' menu. Filters are separated with commas, and a minus sign in the beginning marks it as an exclude filter. For example, <code>C:\Program Files (x86)\Steam\steamapps\common\Hearts of Iron IV\, *.txt, -GER*</code> will search every text file in the base game (Assuming the default location within Windows on Steam) with the exception of those that begin with GER.
-* In '''Visual Studio Code''', this is in the menu triggered with the 'Toggle Search Details' button, represented with an ellipsis. This menu has separate "Files to include" and "Files to exclude" menus, used accordingly. Additionally, this allows representing folder names within the menus, with the doubled <code>*</code> (as in <code>**</code>) used to represent an arbitrary folder name. For example, <code>*.gfx</code> in the "Files to include" and <code>dlc/**</code> in "Files to exclude" will search every single file with the .gfx extension with the exception of those in the dlc folder.
+* '''Visual Studio Code'''의 경우, this is in the menu triggered with the 'Toggle Search Details' button, represented with an ellipsis. This menu has separate "Files to include" and "Files to exclude" menus, used accordingly. Additionally, this allows representing folder names within the menus, with the doubled <code>*</code> (as in <code>**</code>) used to represent an arbitrary folder name. For example, <code>*.gfx</code> in the "Files to include" and <code>dlc/**</code> in "Files to exclude" will search every single file with the .gfx extension with the exception of those in the dlc folder.
 There are the following uses for this:
 * Finding out an internal ID by searching the localisation folder for the localised name. For example, searching for an event's title can be used to determine the ID.
 * Finding out where the database entry of a certain type is defined where it is not immediately intuitive. For example, by searching for an equipment ID within the folder that stores equipment (or even {{path|common/}} in general) can be used to find the exact file, which isn't immediately obvious for some equipment types.
@@ -98,7 +98,7 @@ This is an example of proper indenting:
     |    country_event = { id = my_event.1 hours = 1 }
     }
 }</pre>
-Proper indenting has two primary benefits:
+적절한 들여쓰기 사용에는 두 가지 장점이 있습니다:
 * It's easy to where an argument is contained by moving one indenting level to the left and then following the indent guide's line until it hits code.
 * It's easy to find what falls within a block by following the indent guide's line from the line with the open bracket to the point where it hits the closing bracket.
 Some common errors to check for in the indenting are the following:
@@ -188,11 +188,11 @@ These folders are common to edit within mods:
 * {{path|sound/}}: This folder is used to define sounds that play elsewhere, usually tied to an element of the GUI. This also includes such entries as the division voicelines.
 * {{path|portraits/}}: This folder is used to assign sprites as portraits for randomly-generated generic characters.
 
-=== Code structure ===
+=== 코드 구조 ===
 The script language in which the code is built always has a common structure: <code><attribute> = <argument></code> (sometimes with inequality signs in case of triggers), such as <code>add_political_power = 100</code>, with few exceptions. The figure brackets are used to assign other attributes as the argument, such as <code>random_country = { add_stability = 0.1 }</code>. In this case, everything that lies within the figure brackets will get executed in the [[scope]] of a random country.<br/>
 '''Omitting the argument/equality sign is almost always erroneous'''. For example, this would be incorrect: <code>GER = { leave_faction }</code>. Instead, where there is no expected argument, <code>yes</code> is commonly used as <code>GER = { leave_faction = yes }</code>.
  
-Comments are marked with the <code>#</code> character: everything after that character until the newline will be entirely ignored by the game. For example:
+주석의 경우 <code>#</code> 문자를 사용해 표시합니다. 게임은 해당 문자 다음부터 줄이 바뀌기 전까지 존재하는 모든 내용을 무시할 것입니다. 예를 들어:
 <pre>completion_reward = {
     add_political_power = 100 #TODO: Check if balanced
 }</pre>
@@ -214,7 +214,7 @@ There are these types of argument blocks are particularly common:
 
 === 현지화 (Localisation) ===
 {{Main|Localisation}}
-Names depending on language are defined within [[localisation]]. Taking only the English language into consideration, the {{path|localisation/english}} folder is used. A file within must end with <code>_l_english.yml</code> in the filename to work properly, including the extension that is hidden by default within the Windows File Explorer. The file must be encoded in the UTF-8 encoding with the byte-order mark included, usually called UTF-8-BOM. The exact details on conversion depend on the text editor. The first line in the file is <code>l_english: </code> to assign it to that database.
+언어에 따라 달라지는 이름들은 [[localisation]]에 정의됩니다. Taking only the English language into consideration, the {{path|localisation/english}} folder is used. A file within must end with <code>_l_english.yml</code> in the filename to work properly, including the extension that is hidden by default within the Windows File Explorer. The file must be encoded in the UTF-8 encoding with the byte-order mark included, usually called UTF-8-BOM. The exact details on conversion depend on the text editor. The first line in the file is <code>l_english: </code> to assign it to that database.
 
 A localisation entry is structured as <code> localisation_key:0 "Value of the key"</code>. In here, the first part before the colon is referred to as the localisation key, the ending part in quotes is referred to as the localisation key's value, and the number in-between is the version number. The version number is purely a comment and isn't read by the game, and it can be omitted entirely. '''Any localisation file can be used for any localisation''', and it's better to use new files rather than copying over base game files.<br/>
 While it is possible to avoid using localisation in many cases, it is better to not do so for the following reasons:
@@ -299,7 +299,7 @@ These arguments aren't possible to set within the launcher and can only be added
 ====replace_path====
 <code>replace_path</code> is used in order to unload every previously-loaded file during the main menu loading within the specified folder. This only applies to files directly within that folder, any sub-folders will left untouched.<br/>'''This does not force the mod to replace the folder's contents''': anything higher in the load order than the mod will be loaded in the exact same way, anything lower than the mod will first get loaded before getting unloaded (e.g. the error where a file will get loaded twice if there's one with a filename differing only by capitalisation will still be present even if one of the files is intended to be replaced with replace_path), anything loaded after the main menu will still get loaded from "replaced" folders. '''This doesn't change the load order''': if a file fails to overwrite another mod's file, it will still not do so with this attribute used; instead, <code>dependencies</code> is used in the mod's attributes to change the load order. In case the mod fails to overwrite base game's files, this will never solve the problem: ensure that the folder you're writing to is indeed the mod's folder rather than, for example, the user directory or a backup of the mod; in case of flags, the game may occassionally fail to make the mod's {{path|gfx/flags}} folder overwrite the base game which can be solved by creating another mod and moving the files there.
 
-For example, <code>replace_path = "history/states"</code> will ensure that no state files from the base game or the user directory will be loaded when the game is launched with the mod. This can be used within major map overhauls to ensure that no base game contents will be read with unexpected results. Since the user directory is earlier in the load order than the mod files, this will also prevent the Nudge from having any impact on the states, however the files will still be outputted in the folder even if immediately unloaded upon saving.
+예를 들면, <code>replace_path = "history/states"</code> 는 will ensure that no state files from the base game or the user directory will be loaded when the game is launched with the mod. This can be used within major map overhauls to ensure that no base game contents will be read with unexpected results. Since the user directory is earlier in the load order than the mod files, this will also prevent the Nudge from having any impact on the states, however the files will still be outputted in the folder even if immediately unloaded upon saving.
 
 Since this only unloads indexed files, a direct link to a file will not change regardless of the replace_path being present. For example, <code>replace_path = "history/units"</code> will not change anything, since the files in that folder aren't checked during the main menu loading but rather get loaded with a direct link to the filename, such as <code>oob = "TAG_1936"</code> in [[Country creation#Orders of battle|the country history file]]. Similarly, a <code>replace_path = "gfx/flags"</code> will not change anything since the country-identifying flags are only loaded when the country changes the ruling ideology group.<br/>
 This is particularly obvious with the loading screens: <code>replace_path = "gfx/loadingscreens"</code> will prevent any base game or DLC loading screen from appearing during the loading, however the main menu background will remain the same as if the replace_path wasn't present. This is since the main menu background is defined as a sprite with a direct link to the image, by default in {{path|interface/frontendmainviewbg.gfx}}.
@@ -336,7 +336,7 @@ Names for in-game items (e.g. the name for research categories or rules like can
 
 ==유용한 지식==
 
-Large English-speaking modding communities include [https://discord.gg/8p7PSbR the HOI4 Modding Coop] and [https://discord.gg/4DczT9pVtH the HOI4 Modding Den], which can be joined on [https://discord.com Discord]. It's useful to join one or multiple of them, as they contain links to modding resources and you can ask questions regarding modding in them.
+영어 중심의 대형 모딩 커뮤니티로는 [https://discord.gg/8p7PSbR the HOI4 Modding Coop] 및 [https://discord.gg/4DczT9pVtH the HOI4 Modding Den] 가 있으며, 후자의 경우 [https://discord.com Discord]를 통해 가입할 수 있습니다. It's useful to join one or multiple of them, as they contain links to modding resources and you can ask questions regarding modding in them.
 
 <code>settings.txt</code>, located within the user directory also containing the <code>mod</code> folder, can be changed to change the game uses to open files from Microsoft Notepad, if the path to the editor is correct. Here are examples with 2 of frequently used text editors:<br/>
 '''Notepad++''':<pre>
@@ -348,9 +348,9 @@ editor_postfix=":$:1"</pre>
 
 ==더 보기==
 *[[Mods]]
-* Getting started with modding [[forum: 995985]]
+* 모딩 시작하기 [[forum: 995985]]
 * How to create a new ship unit in Man the Guns [[forum: 1157324]]
-* How to add a new unit - Checklist [[forum: 947435]]
+* 새 유닛을 추가하는 방법 - 체크리스트 [[forum: 947435]]
 
 == Notes ==
 
