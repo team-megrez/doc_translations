@@ -11,6 +11,7 @@
 ### 그 외
 
 * [ ] [Hoi4 Modding Guides & Ressources Collection](https://docs.google.com/spreadsheets/d/1N7qlNjJW0G15n0-nI90hrtaazaPmajy0b3WYq_v2GZs/edit?usp=sharing)
+  * [ ] [번역중인 버전](https://docs.google.com/spreadsheets/d/1bSS4viKCYxN5qB8GyRCGoGEeXPSaROOyRQ6u3dH3Y4I/edit#gid=0)
 * [ ] [Paradox Forum - Scripted GUI tutorial (계정 필요)](https://forum.paradoxplaza.com/forum/index.php?threads/scripted-gui-tutorial.1084697/)
 * [ ] [Dynamic Focus Trees](https://docs.google.com/document/d/13SrkeOdNPAtS2yCif4N-adNY_AQZ3bqG6nRoCJm3f3Q/)
 * [ ] [Modding Commands, Triggers, Scopes](https://docs.google.com/file/d/1vauoG9vAoQUGLdGOStD-SDPjoLjVnZ0B)
