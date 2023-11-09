@@ -4,7 +4,7 @@
 
 ### Paradox Wiki - HOI4 Modding
 
-* [ ] [Modding](https://hoi4.paradoxwikis.com/Modding)
+* [ ] [Modding](https://hoi4.paradoxwikis.com/Modding) ([진행중](./HOI4Wiki/Modding.md))
 * [ ] [Mods](https://hoi4.paradoxwikis.com/Mods)
 * [ ] [Modding 카테고리 해당 문서](https://hoi4.paradoxwikis.com/Category:Modding)
 
