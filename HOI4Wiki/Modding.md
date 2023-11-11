@@ -26,9 +26,9 @@
 * **작업 내용을 백업**하여 손실을 방지하십시오. [Git](https://git-scm.com/) 같은 소스 컨트롤 시스템을 사용하거나 [GitHub](https://github.com/) 또는 [Gitlab](https://gitlab.com) 같은 협업용 저장소를 사용하여 팀의 작업을 조율하거나 파일들의 사본을 저장해두는 것도 고려할 수 있습니다. 덧붙여 Github이나 Gitlab을 통한 버전 관리는  keeping via Github or Gitlab can also be very useful for debugging due to limiting the selection of potential broken files.
   * The [Modding Git Guide](https://docs.google.com/document/d/1bQdOVMY6FTu-2AKXZblYp6bF2-_W2JMUtXc5a0nZ8Ls) is a community made guide for using Git, GitHub/GitLab, and related tools such as KDiff3. It can be a useful stop for questions beyond this wiki, and contains step by step guides for much of what is talked about here.
 * 텍스트 파일은 바이트 순서 마크(byte order)가 포함된 **UTF-8 인코딩**을 사용합니다.  This is commonly called "UTF-8", but can sometimes be specified as "UTF-8 without BOM".
-* **Use UTF-8 encoding with the byte order mark** for localisation files (.yml). This is commonly called "UTF-8-BOM", but can be just "UTF-8", in which case omitting the byte order mark is a separate option. Some text editors, such as Atom, do not support the byte order mark in entirety and should be avoided for localisation.
-* '''Use comments''' starting with # character, to remember reasons for writing tricky stuff. A single sharp sign will make the rest of the line completely ignored. There is no multi-line comment notation in the code.
-* **디버그 모드** 를 활성화하여 효율적으로 디버깅하십시오. Steam에서 실행 시 옵션에 `-debug`를 추가하면 됩니다. 실행 옵션은 The launch options are accessed in the menu opened by right-clicking the game and choosing 'Properties..'.
+* 현지화 (.yml) 파일에서는 **바이트 오더 마크(Byte Order Mark, BOM)이 포함된 UTF-8 인코딩**을 사용하십시오. 이는 흔히 "UTF-8-BOM"이라고 하지만, but can be just "UTF-8", in which case omitting the byte order mark is a separate option. Some text editors, such as Atom, do not support the byte order mark in entirety and should be avoided for localisation.
+* `#` 문자로 시작하는 '''주석을 사용'''하면 복잡한 코드를 작성하는 이유 등을 편리하게 기억할 수 있습니다. `#` 기호를 한 번 쓰는 것으로도 해당 줄의 나머지 부분을 코드로 간주하지 않게 됩니다. 여러 줄에 걸친 주석을 가리키는 기호는 없습니다 (즉 각 줄마다 `#` 기호를 사용해야 합니다).
+* **디버그 모드** 를 활성화하여 효율적으로 디버깅하십시오. Steam에서 실행 시 옵션에 `-debug`를 추가하면 됩니다. 실행 옵션은 게임을 마우스 오른쪽 클릭하여 `속성(R)` 설정을 열어 관리할 수 있습니다.
   * 또 다른 방법으로, 윈도에서는 `hoi4.exe` 또는 `dowser.exe` 파일의 바로 가기를 만들고 바로 가기의 경로 설정에서 경로 끝에 (스페이스 키를 눌러 한 칸을 띈 후) `-debug`를 추가할 수 있습니다 (예: `"C:\Program Files (x86)\Steam\steamapps\common\Hearts of Iron IV\hoi4.exe" -debug`).
 
 ### 디버그의 장점
@@ -50,7 +50,7 @@ Note that if you turn on the debug mode through the 'debug' console command, '''
 게임 모딩에는 대체로 아래의 텍스트 에디터들이 사용됩니다:
 
 * [Visual Studio Code](https://code.visualstudio.com/Download).
-  * 패러독스 사의 구문 강조, 유효성 검사 및 트리거나 효과에 대한 툴팁을 제공하는 CWTools라는 팬메이드 확장이 존재합니다. 설치하려면 Visual Studio Code 좌측 패널의 Extensions(확장) 탭에서 검색하십시오.
+  * 패러독스 사의 구문 강조, 유효성 검사 및 트리거나 효과에 대한 툴팁을 제공하는 **CWTools** 라는 팬메이드 확장이 존재합니다. 설치하려면 Visual Studio Code 좌측 패널의 Extensions(확장) 탭에서 검색하십시오.
   * 최근의 버전들은 {} 괄호 쌍을 단계에 따라 다른 색으로 표시하고 짝이 없는 괄호에 대해 빨강색으로 표시하는 기능이 있으며 이는 매우 실용적인 기능입니다.
 * [Notepad++](http://notepad-plus-plus.org/): 언어로 Perl을 선택하면 충분한 수준의 문장 강조 기능을 제공하고 코드 블록이나 주석을 간략히 축소하게 해줍니다. 이를 기본값으로 설정하려면, go to Settings, Style Configurator, find Perl in the list on the left and add "gui txt" (without quotes) to the "User ext." field at the bottom.
   * Some options that are commonly turned on by default in other text editors are turned off in Notepad++, but can be changed in the topbar. This includes {{hover|Makes long lines get wrapped across multiple lines instead of requiring scrolling horizontally|Word wrap}}, {{hover|Makes a minimized view of the document appear in the right edge, making scrolling easier but taking up some space|Document map}}, {{hover|Draws lines every 4 spaces or a single tab symbol making it easier to keep track of indentation. This makes missing brackets easier to see by default.|Indent guide}}, and {{hover|Opens an entire folder within the editor as to be able to open files within more easily, without changing to the file explorer, as well as simplifying using the 'Find in files...' command to check every file within a folder without opening each one individually.|Folder as workspace}}.
