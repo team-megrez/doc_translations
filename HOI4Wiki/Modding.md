@@ -64,19 +64,20 @@ Note that if you turn on the debug mode through the 'debug' console command, '''
 * Greater capabilities to work with multiple files. Each of these editors may only have one instance of it open at a time with multiple files open at once (switching between them with {{key press|Ctrl}} + {{key press|Tab}}), in contrast to Microsoft Notepad that opens a separate instance for each opened file, which can quickly fill the {{key press|Alt}} + {{key press|Tab}} menu. Multiple instances of the text editor can still be opened, however. A text comparison tool also exists on each one of these: {{hover|Installed via the &quot;Plugins&quot; → &quot;Plugins Admin..&quot; menu|"ComparePlus" plugin in Notepad++}}, {{hover|Installed via the &quot;Preferences&quot; → &quot;Package Control&quot; → &quot;Install Package&quot; menu|"Compare Side-By-Side" or "Diffy" package in Sublime Text}}, or a variety of Visual Studio Code extensions ([https://marketplace.visualstudio.com/items?itemName=ryu1kn.partial-diff "Partial Diff"] being the most popular one).
 * Greater customisation capabilities: each of these text editors allows a wide variety of light or night themes that can be picked as fit, with downloadable themes existing as well. Since one would need to look at the text editor a lot while modding, selecting a theme that looks good to the eyes can make the experience much better.
 
-### 여러 파일 찾기 
-{{anchor|Search in files}}
+### 여러 파일 찾기
+
 One feature of non-default text editors is a highly-customisable search of all files within the same folder. This is highly useful for dealing with errors and finding locations of certain elements.<br/>
 '''Windows File Explorer is a poor choice for doing this''', as it only searches inside of .txt files while it may be desirable to search files of other extensions, e.g. .yml, .gfx, .gui, or .asset, and it is very noticeably slower than either text editor: a search taking ~10 seconds on a text editor may take up to 15 minutes to conclude in the Windows File Explorer.
 
 This is how exactly the feature is enabled in the common text editors:
-* '''Notepad++''' – This is located in the "Search" topbar menu as "Find in Files...". By default, no folder is provided. "Follow current doc." allows the text editor to automatically input the currently-opened document's folder as the place for the search, or it can be entered manually. Alternatively, this menu can be opened from the right-click menu of a folder within the "Folder as Workspace" menu – accessed by a button in the topbar – which'll automatically set the folder location to be that folder. The {{key press|Ctrl}}+{{key press|Shift}}+{{key press|F}} hotkey also opens the menu for this feature by default.
-* '''Sublime Text''' – This is located in the "Find" topbar menu as "Find in Files...". In order to add a folder to search, the menu to the right of the "Where:" line can be opened, with either "Add Folder" (to select an individual folder) or "Add Open Folders" (To automatically select all folders opened via Sublime Text) buttons serving to do so. The {{key press|Ctrl}}+{{key press|Shift}}+{{key press|F}} hotkey also opens the menu for this feature by default.
-* '''Visual Studio Code''' – Visual Studio Code only supports searching the currently opened folder. A folder is opened either through the "Open Folder..." button in the "File" topbar menu or the "Explorer" menu, accessed through the bar on the left. After this, the functionality can be accessed in the "Edit" menu as "Find in Files". In order to speed up the search, filename filters can be used. For example, <code>localisation/english/*.yml</code> within "files to include" will only search every *.yml file within the {{path|custom=1|<currently opened folder>/localisation/english/}} folder, where <code>*</code> stands for any amount (including 0) of any characters within the filename. Similar filters can be used in the previous two text editors, however without allowing folders to be filtered — only the filenames. The {{key press|Ctrl}}+{{key press|Shift}}+{{key press|F}} hotkey also opens the menu for this feature by default.
+
+* **Notepad++** – This is located in the "Search" topbar menu as "Find in Files...". By default, no folder is provided. "Follow current doc." allows the text editor to automatically input the currently-opened document's folder as the place for the search, or it can be entered manually. Alternatively, this menu can be opened from the right-click menu of a folder within the "Folder as Workspace" menu – accessed by a button in the topbar – which'll automatically set the folder location to be that folder. The {{key press|Ctrl}}+{{key press|Shift}}+{{key press|F}} hotkey also opens the menu for this feature by default.
+* **Sublime Text** – This is located in the "Find" topbar menu as "Find in Files...". In order to add a folder to search, the menu to the right of the "Where:" line can be opened, with either "Add Folder" (to select an individual folder) or "Add Open Folders" (To automatically select all folders opened via Sublime Text) buttons serving to do so. The {{key press|Ctrl}}+{{key press|Shift}}+{{key press|F}} hotkey also opens the menu for this feature by default.
+* **Visual Studio Code** – Visual Studio Code는 현재 열린 폴더에 대해서만 검색을 지원합니다 only supports searching the currently opened folder. A folder is opened either through the "Open Folder..." button in the "File" topbar menu or the "Explorer" menu, accessed through the bar on the left. After this, the functionality can be accessed in the "Edit" menu as "Find in Files". In order to speed up the search, filename filters can be used. For example, <code>localisation/english/*.yml</code> within "files to include" will only search every *.yml file within the {{path|custom=1|<currently opened folder>/localisation/english/}} folder, where <code>*</code> stands for any amount (including 0) of any characters within the filename. Similar filters can be used in the previous two text editors, however without allowing folders to be filtered — only the filenames. The {{key press|Ctrl}}+{{key press|Shift}}+{{key press|F}} hotkey also opens the menu for this feature by default.
 A filter on the file extension can be set to speed up the search. This depends on the text editor. Note that <code>*</code> is used to mark any amount of any characters, and this is universal.
 * In '''Notepad++''', this is done with the 'filter' menu. Filters are separated with spaces, and an exclamation point in the beginning marks it as an exclude filter. For example, <code>*.yml !*french.yml</code> will result in searching every localisation file aside from the French ones.
 * In '''Sublime Text''', this is in the 'where' menu. Filters are separated with commas, and a minus sign in the beginning marks it as an exclude filter. For example, <code>C:\Program Files (x86)\Steam\steamapps\common\Hearts of Iron IV\, *.txt, -GER*</code> will search every text file in the base game (Assuming the default location within Windows on Steam) with the exception of those that begin with GER.
-* '''Visual Studio Code'''의 경우, this is in the menu triggered with the 'Toggle Search Details' button, represented with an ellipsis. This menu has separate "Files to include" and "Files to exclude" menus, used accordingly. Additionally, this allows representing folder names within the menus, with the doubled <code>*</code> (as in <code>**</code>) used to represent an arbitrary folder name. For example, <code>*.gfx</code> in the "Files to include" and <code>dlc/**</code> in "Files to exclude" will search every single file with the .gfx extension with the exception of those in the dlc folder.
+* **Visual Studio Code**의 경우, this is in the menu triggered with the 'Toggle Search Details' button, represented with an ellipsis. This menu has separate "Files to include" and "Files to exclude" menus, used accordingly. Additionally, this allows representing folder names within the menus, with the doubled <code>*</code> (as in <code>**</code>) used to represent an arbitrary folder name. For example, <code>*.gfx</code> in the "Files to include" and <code>dlc/**</code> in "Files to exclude" will search every single file with the .gfx extension with the exception of those in the dlc folder.
 There are the following uses for this:
 * Finding out an internal ID by searching the localisation folder for the localised name. For example, searching for an event's title can be used to determine the ID.
 * Finding out where the database entry of a certain type is defined where it is not immediately intuitive. For example, by searching for an equipment ID within the folder that stores equipment (or even {{path|common/}} in general) can be used to find the exact file, which isn't immediately obvious for some equipment types.
@@ -84,7 +85,7 @@ There are the following uses for this:
 * Dealing with unintuitive errors where the location is not specified, such as <code>Invalid Decision Category</code>, where this can be used to locate ''which'' file is throwing the error.
 * Finding out what can cause a certain occurance to happen, such what fires a certain event.
 
-===들여쓰기===
+### 들여쓰기
 Another reason to use non-default text editors is greater indenting capabilities. Indenting refers to the usage of newlines and spaces at the beginning of the line, which does not leave an impact on how the code is interpreted, but makes it easier to see the relations between different parts of the code.<br/>
 Typically, either a tab character (represented as <code>\t</code>) or 4 spaces are used as a single indenting level, placed from the beginning of the line to the beginning of code on the line. In order to increase the indenting level of code, the {{key press|Tab}} button is used in text editors, which can be done on multiple lines at the same time by selecting them. Inversely, {{key press|Shift}}+{{key press|Tab}} is used to decrease the indenting level of the line by one.
 
@@ -150,21 +151,27 @@ characters = {
 ```
 
 * Putting a closing brackets on the same level as prior script:
-<pre>if = {
+
+```text
+if = {
     limit = {
         my_scripted_trigger = yes
     }
     } # Closes the if statement, and so should've been one more level to the left to match the if statement's indent level.
     my_scripted_effect = yes # Always executed due to being outside of the if statement.
-}</pre>
-<pre>country_event = {
+}
+```
+
+```text
+country_event = {
     id = my_event.1
     option = {
         name = my_event.1.a
         } # Closes option = { ... }
     }     # Closes country_event = { ... }
     option = { # Does not work due to being defined outside of an event.
-        <...></pre>
+        <...>
+```
 
 * Placing neighbouring lines with a difference of at least 2 indent levels:
 
@@ -183,7 +190,7 @@ focus = { # Does not work due to being contained within another focus = { ... }
 
 Following the indenting rules and checking for these indenting errors will ensure that there will be no bracket-related errors within the code.
 
-==Universal modding concepts ==
+### Universal modding concepts 
 ''It's heavily recommended to turn off Windows file explorer from hiding file extensions from the filename'', if using Windows. File extensions are considered a part of the filename, and hiding them can cause files to not work due to wrong filenames (Such as accidentally saving localisation files as .txt files, saving an image in the wrong format and not realising it, et cetera).
 === Loading files ===
 After creating a mod folder within the launcher, every single file within will get loaded at the same location as in base game. Taking a mod with the name of "yourmod" as an example, every single file within {{path|custom=1|mod/yourmod/common/national_focus}} will get loaded alongside files in base game's {{path|common/national_focus}} assuming the default path. However, inserting one more folder as in {{path|custom=1|mod/yourmod/test/common/national_focus}} will result in the files in that folder not being loaded as national focus files, appearing to get ignored.<br/>
@@ -220,19 +227,28 @@ These folders are common to edit within mods:
 The script language in which the code is built always has a common structure: <code><attribute> = <argument></code> (sometimes with inequality signs in case of triggers), such as <code>add_political_power = 100</code>, with few exceptions. The figure brackets are used to assign other attributes as the argument, such as <code>random_country = { add_stability = 0.1 }</code>. In this case, everything that lies within the figure brackets will get executed in the [[scope]] of a random country.<br/>
 '''Omitting the argument/equality sign is almost always erroneous'''. For example, this would be incorrect: <code>GER = { leave_faction }</code>. Instead, where there is no expected argument, <code>yes</code> is commonly used as <code>GER = { leave_faction = yes }</code>.
  
-주석의 경우 <code>#</code> 문자를 사용해 표시합니다. 게임은 해당 문자 다음부터 줄이 바뀌기 전까지 존재하는 모든 내용을 무시할 것입니다. 예를 들어:
-<pre>completion_reward = {
+주석의 경우 `#` 문자를 사용해 표시합니다. 게임은 해당 문자 다음부터 줄이 바뀌기 전까지 존재하는 모든 내용을 무시할 것입니다. 예를 들어:
+
+```text
+completion_reward = {
     add_political_power = 100 #TODO: Check if balanced
-}</pre>
+}
+```
+
 There exists no multi-lined comment block.
 
 Aside from comments and strings (marked with the quotation marks, must be on one line total), indenting does not matter: most files can be done on one line in total without any change in how they get interpreted. However, doing indenting properly can make detecting bracket problems much easier without using a text editor's bracket highlighting and overall makes it easier to see at a glance what each block includes within of itself and what it doesn't.<br/>
 This also means that an attribute's argument should never be left empty, as it'll interpret the next attribute as the argument instead. For example:
-<pre>focus = {
+
+```text
+focus = {
     id = TAG_focusname
     icon = 
     x = 2
-}</pre>In this case, the focus' icon attribute is set with <code>icon = x</code>, and next the game has no idea how to interpret <code>= 2</code>. In practice, this'll lead to the focus not being at the expected position.
+}.
+```
+
+In this case, the focus' icon attribute is set with <code>icon = x</code>, and next the game has no idea how to interpret <code>= 2</code>. In practice, this'll lead to the focus not being at the expected position.
 
 There are these types of argument blocks are particularly common:
 * [[Effects]] are used in circumstances such as focus completion rewards, event options, decision effects, [[on actions]], country history files, and so on. They are used in order to enact a one-time change to the game's state.
